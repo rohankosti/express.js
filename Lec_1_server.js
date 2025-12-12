@@ -15,8 +15,6 @@ app.get('/service',(req,res)=>{
     res.send('<h4>Hello user From Service Page</h4>');
     
 })
-
-
 app.listen(3000,()=>{
     console.log(`server are runnig port on http://localhost:3000`);
     

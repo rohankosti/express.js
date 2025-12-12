@@ -4,13 +4,13 @@ import { fileURLToPath } from "url";
 const app = express();
 
 const filpath = fileURLToPath(import.meta.url);
-// console.log(filpath);
+console.log(filpath);
 
 const dirpath = path.dirname(filpath);
-// console.log(dirpath);
+console.log(dirpath);
 
 const final = path.join(dirpath, "./public/index.html");
-// console.log(final);
+console.log(final);
 
 // app.get("/", (req, res) => {
 //   res.sendFile(final);

@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
     greetArea.style.color = ''; // reset
     greetArea.textContent = `Hello, ${name}! 👋 Welcome to your Express app.`;
   });
-
-  // small keyboard shortcut: Enter to greet
   nameInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') greetBtn.click();
   });

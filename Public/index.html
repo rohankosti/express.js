@@ -78,26 +78,23 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", (e) => {
+    document.addEventListener("DOMContentLoaded", () => {
+      // 🔹 yahin pe dalna hai
+      if (!localStorage.getItem("product")) {
+        localStorage.setItem("product", JSON.stringify([]));
+      }
       const productForm = document.getElementById("productForm");
       const tbody = document.getElementById("tbody");
-
-      // ADD PRODUCT
       productForm.addEventListener("submit", (e) => {
         e.preventDefault();
-
         let name = document.getElementById("name").value;
-        let price = document.getElementById("price").value;
-        let qty = document.getElementById("qty").value;
-
+        let price = Number(document.getElementById("price").value);
+        let qty = Number(document.getElementById("qty").value);
         let total = price * qty;
         const obj = { name, price, qty, total };
-
-        let products = JSON.parse(localStorage.getItem("product")) || [];
+        let products = JSON.parse(localStorage.getItem("product"));
         products.push(obj);
-
         localStorage.setItem("product", JSON.stringify(products));
-
         productForm.reset();
         renderTable();
       });
@@ -105,21 +102,20 @@
       // DELETE PRODUCT (Event Delegation)
       tbody.addEventListener("click", (e) => {
         // if (e.target.classList.contains("delete")) {
-          let index = e.target.getAttribute("data-index");
+        let index = e.target.getAttribute("data-index"); 
 
-          let products = JSON.parse(localStorage.getItem("product"));
-          products.splice(index, 1);
+        let products = JSON.parse(localStorage.getItem("product"));
+        products.splice(index, 1);
 
-          localStorage.setItem("product", JSON.stringify(products));
-          renderTable();
-        // }
+        localStorage.setItem("product", JSON.stringify(products));
+        renderTable();
+        
       });
 
       // RENDER TABLE
       const renderTable = () => {
-        let products = JSON.parse(localStorage.getItem("product")) || [];
+        let products = JSON.parse(localStorage.getItem("product")) ;
         tbody.innerHTML = "";
-
         products.forEach((item, index) => {
           tbody.innerHTML += `
             <tr>
@@ -140,7 +136,6 @@
           `;
         });
       }
-
       // SHOW DATA ON PAGE LOAD
       renderTable();
     });

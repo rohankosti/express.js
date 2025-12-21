@@ -27,7 +27,7 @@ app.use(express.static('Public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/Job',jobpostRouter);
+app.use(jobpostRouter);
 
 // app.post('/storeJobVacancy',async (req, res) => {
 //    const jobdata = req.body;

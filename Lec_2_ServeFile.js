@@ -23,9 +23,9 @@ console.log(final);
 
 app.use(express.static('Public'));
 
-app.get("/demo", (req, res) => {
-    res.sendFile(path.join(dirpath, "public/demo.html"));
-});
+// app.get("/demo", (req, res) => {
+//     res.sendFile(path.join(dirpath, "public/demo.html"));
+// });
 
 
 app.listen(3000, () => {
